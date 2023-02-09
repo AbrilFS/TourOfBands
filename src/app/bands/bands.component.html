@@ -1,0 +1,18 @@
+<h2> My Bands </h2>
+<ul class="bands">
+  <li *ngFor="let band of bands"
+  [class.selected]="band === selectedBand"
+  (click)="onSelect(band)">
+    <span class="badge"> {{ band.id }} </span> {{ band.name }}
+  </li>
+</ul>
+
+<div *ngIf="selectedBand">
+  <h2> {{selectedBand.name | uppercase}} Details: </h2>
+    <div><span>id:</span> {{ selectedBand.id }}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedBand.name" placeholder="name" />
+    </label>
+  </div>
+</div>
