@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Band } from '../band';
-import { BANDS } from '../mock-bands';
+import { BandService } from '../band.service';
 
 @Component({
   selector: 'app-bands',
@@ -10,11 +10,19 @@ import { BANDS } from '../mock-bands';
 export class BandsComponent {
 
 
-bands = BANDS
+bands = Band[];
 selectedBand: Band | undefined;
 
 onSelect (band : Band): void{
   this.selectedBand = band;
   }
+
+  constructor (private bandService : BandService) {}
+
+  getBands() : void{
+    this.bands = this.bandService.getBands
+  };
+
+
 
 }
